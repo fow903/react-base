@@ -1,11 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
+import Counter from './base/Counter';
 
 function App() {
   return (
     <>
       <h1>React</h1>
       <hr />
+      <Counter />    
     </>
   );
 }
