@@ -6,16 +6,26 @@ interface CounterProps {
 
 const Counter = (props: CounterProps) => {
     const { initialValue = 0 } = props;
-    const [counter, setCounter] = useState(initialValue)
+    const [counter, setCounter] = useState({
+        counterBy: initialValue,
+        clicks: 0
+    })
 
-    const handleClick = () => setCounter(prev => prev + 1)
-  
+    const { counterBy, clicks} = counter; 
+
+    const handleClick = (increment: number) => {
+        setCounter({
+            counterBy: counter.counterBy + increment,
+            clicks: counter.clicks + 1
+        });
+    }
+
     return (
         <>
-            <h1>Counter: {counter}</h1>
-            <button onClick={handleClick}>
-                +1
-            </button>
+            <h1>Counter By: {counterBy}</h1>
+            <h1>Clicks: {clicks}</h1>
+            <button onClick={() => handleClick(1)}>+1</button>
+            <button onClick={() => handleClick(5)}>+5</button>
         </>
     )
 }
